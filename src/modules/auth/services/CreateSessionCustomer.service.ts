@@ -21,7 +21,7 @@ export class CreateSessionCustomerService {
   async execute({
     email,
     password,
-  }: CreateSessionCustomerDTO): Promise<string> {
+  }: CreateSessionCustomerDTO): Promise<{ token: string }> {
     try {
       const customer =
         await this.customerRepository.returnCustomerByEmail(email);
@@ -39,11 +39,13 @@ export class CreateSessionCustomerService {
         );
       }
 
-      return this.jwtService.sign({
+      const token = this.jwtService.sign({
         id: customer.id,
         fullname: customer.fullname,
         email: customer.email,
       });
+
+      return { token };
     } catch (error) {
       console.error('Error creating customer:', error);
       throw new Error(

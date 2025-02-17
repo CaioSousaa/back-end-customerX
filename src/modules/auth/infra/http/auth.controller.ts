@@ -22,7 +22,7 @@ export class CreateSessionCustomerController {
   @UseInterceptors(ClassSerializerInterceptor)
   public async createSession(
     @Body() { email, password }: CreateSessionCustomerDTO,
-  ): Promise<string> {
+  ): Promise<{ token: string }> {
     return this.createSessionService.execute({ email, password });
   }
 }
