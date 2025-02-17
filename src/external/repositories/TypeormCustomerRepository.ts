@@ -9,6 +9,18 @@ export class TypeormCustomerRepository implements ICustomerRepository {
     private custumerRepository: Repository<Customer>,
   ) {}
 
+  async returnCustomerByEmail(email: string): Promise<Customer | null> {
+    const customerExists = await this.custumerRepository.findOneBy({
+      email,
+    });
+
+    if (!customerExists) {
+      return null;
+    }
+
+    return customerExists;
+  }
+
   async saveCustomer(customer: Customer): Promise<void> {
     await this.custumerRepository.save(customer);
   }
