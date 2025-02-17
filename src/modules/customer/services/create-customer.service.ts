@@ -27,19 +27,26 @@ export class CreateCustomerService {
       );
     }
 
-    const cryptoPassword = await this.hashPassword.generatedHash(password);
+    try {
+      const cryptoPassword = await this.hashPassword.generatedHash(password);
 
-    const staticCustomer: Customer = Customer.create({
-      password: cryptoPassword,
-      email,
-      fullname,
-      createdAt: new Date(),
-    });
+      const staticCustomer: Customer = Customer.create({
+        password: cryptoPassword,
+        email,
+        fullname,
+        createdAt: new Date(),
+      });
 
-    const newCustomer = await this.customerRepository.create(staticCustomer);
+      const newCustomer = await this.customerRepository.create(staticCustomer);
 
-    await this.customerRepository.saveCustomer(newCustomer);
+      await this.customerRepository.saveCustomer(newCustomer);
 
-    return newCustomer;
+      return newCustomer;
+    } catch (error) {
+      console.error('Error creating customer:', error);
+      throw new Error(
+        'An unexpected error occurred while creating the customer',
+      );
+    }
   }
 }
