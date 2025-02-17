@@ -3,7 +3,7 @@ import { ICustomerRepository } from '../port/ICustomerRepository';
 import { BcryptHash } from '../providers/hash/implementation/BcryptHash';
 import { IHash } from '../providers/hash/contract/IHash';
 import { Customer } from '../domain/entities/Customer';
-import { ICreateCustomerDTO } from '../dto/ICreateCustomerDTO';
+import { CreateCustomerDTO } from '../dto/CreateCustomerDTO';
 import { TypeormCustomerRepository } from '../../../external/repositories/TypeormCustomerRepository';
 
 export class CreateCustomerService {
@@ -17,7 +17,7 @@ export class CreateCustomerService {
     email,
     fullname,
     password,
-  }: ICreateCustomerDTO): Promise<Customer> {
+  }: CreateCustomerDTO): Promise<Customer> {
     const customerExists =
       await this.customerRepository.findCustomerByEmail(email);
 

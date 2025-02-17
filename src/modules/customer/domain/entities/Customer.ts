@@ -1,20 +1,8 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-
 export class Customer {
   id?: string;
-
-  @IsString()
-  @IsNotEmpty()
   fullname: string;
-
-  @IsEmail()
-  @IsNotEmpty()
   email: string;
-
-  @IsString()
-  @IsNotEmpty()
   password: string;
-
   createdAt: Date;
 
   constructor({ createdAt, email, fullname, password }: Customer) {

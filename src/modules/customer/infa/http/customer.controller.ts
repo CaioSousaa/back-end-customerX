@@ -8,7 +8,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateCustomerService } from '../../services/create-customer.service';
-import { ICreateCustomerDTO } from '../../dto/ICreateCustomerDTO';
+import { CreateCustomerDTO } from '../../dto/CreateCustomerDTO';
 import { Customer } from '../../domain/entities/Customer';
 
 @Controller('api/customer')
@@ -19,7 +19,7 @@ export class CustomerController {
   @UsePipes(ValidationPipe)
   @UseInterceptors(ClassSerializerInterceptor)
   async create(
-    @Body() customerRequestDTO: ICreateCustomerDTO,
+    @Body() customerRequestDTO: CreateCustomerDTO,
   ): Promise<Customer> {
     const customer = this.createCustomerService.execute(customerRequestDTO);
 
