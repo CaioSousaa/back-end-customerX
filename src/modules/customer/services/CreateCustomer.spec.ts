@@ -1,4 +1,4 @@
-import { CreateCustomerService } from './create-customer.service';
+import { CreateCustomerService } from './CreateCustomer.service';
 import { TypeormCustomerRepository } from '../../../external/repositories/TypeormCustomerRepository';
 import { BcryptHash } from '../providers/hash/implementation/BcryptHash';
 import { Test, TestingModule } from '@nestjs/testing';
