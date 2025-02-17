@@ -7,7 +7,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { CreateCustomerService } from '../../services/create-customer.service';
+import { CreateCustomerService } from '../../services/CreateCustomerService';
 import { CreateCustomerDTO } from '../../dto/CreateCustomerDTO';
 import { Customer } from '../../domain/entities/Customer';
 
