@@ -18,8 +18,8 @@ export class CreateContactDTO {
 
   @IsNotEmpty()
   @IsNumber()
-  @Max(11)
-  @Min(11)
+  @Min(10000000000)
+  @Max(99999999999)
   numberPhone: number;
 
   @IsEmail()
