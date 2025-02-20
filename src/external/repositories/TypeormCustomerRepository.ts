@@ -47,4 +47,16 @@ export class TypeormCustomerRepository implements ICustomerRepository {
 
     return false;
   }
+
+  async returnCustomerById(id: string): Promise<Customer | null> {
+    const customerExists = await this.custumerRepository.findOneBy({
+      id,
+    });
+
+    if (!customerExists) {
+      return null;
+    }
+
+    return customerExists;
+  }
 }

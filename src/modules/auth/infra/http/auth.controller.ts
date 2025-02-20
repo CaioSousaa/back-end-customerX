@@ -11,7 +11,7 @@ import {
 import { CreateSessionCustomerDTO } from '../../dto/CreateSessionCustomerDTO';
 import { CreateSessionCustomerService } from '../../services/CreateSessionCustomer.service';
 
-@Controller('api/authentiacte')
+@Controller('api/authenticate')
 export class CreateSessionCustomerController {
   constructor(
     private readonly createSessionService: CreateSessionCustomerService,

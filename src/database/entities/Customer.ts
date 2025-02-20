@@ -1,4 +1,5 @@
-import { Column, Entity, Generated, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Generated, OneToMany, PrimaryColumn } from 'typeorm';
+import { ContactDatabase } from './Contact';
 
 @Entity()
 export class CustomerDatabase {
@@ -17,4 +18,7 @@ export class CustomerDatabase {
 
   @Column()
   createdAt: Date;
+
+  @OneToMany(() => ContactDatabase, (contact) => contact.customer)
+  contacts: ContactDatabase[];
 }
