@@ -7,6 +7,6 @@ export interface IContactRepository {
     numberPhone: number,
     email: string,
   ): Promise<boolean>;
-  findManyContacts(): Promise<Contact[]>;
+  findManyContacts(customerId: string): Promise<Contact[]>;
   findContact(numberPhone: number): Promise<Contact>;
 }

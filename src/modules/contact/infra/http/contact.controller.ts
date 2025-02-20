@@ -2,6 +2,7 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Get,
   Param,
   Post,
   UseInterceptors,
@@ -11,10 +12,14 @@ import {
 import { CreateContactService } from '../../services/CreateContact.service';
 import { CreateContactDTO } from '../../dto/CreateContactDTO';
 import { Contact } from '../../domain/entities/Contact';
+import { FindManyContactsOfTheCustomerService } from '../../services/FindManyContactsOfTheCustomer.service';
 
 @Controller('api/contact')
 export class ContactController {
-  constructor(private createContactService: CreateContactService) {}
+  constructor(
+    private createContactService: CreateContactService,
+    private findManyContactsOhTheCustomer: FindManyContactsOfTheCustomerService,
+  ) {}
 
   @Post(':id')
   @UsePipes(ValidationPipe)
@@ -29,5 +34,13 @@ export class ContactController {
     );
 
     return contact;
+  }
+
+  @Get('many/:id')
+  async getMany(@Param('id') customerId: string): Promise<Contact[]> {
+    const contacts =
+      await this.findManyContactsOhTheCustomer.execute(customerId);
+
+    return contacts;
   }
 }

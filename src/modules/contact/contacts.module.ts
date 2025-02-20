@@ -6,6 +6,7 @@ import { TypeormContactRepository } from 'src/external/repositories/TypeormConta
 import { TypeormCustomerRepository } from 'src/external/repositories/TypeormCustomerRepository';
 import { ContactController } from './infra/http/contact.controller';
 import { CreateContactService } from './services/CreateContact.service';
+import { FindManyContactsOfTheCustomerService } from './services/FindManyContactsOfTheCustomer.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -15,6 +16,7 @@ import { CreateContactService } from './services/CreateContact.service';
     CreateContactService,
     TypeormContactRepository,
     TypeormCustomerRepository,
+    FindManyContactsOfTheCustomerService,
   ],
   controllers: [ContactController],
 })

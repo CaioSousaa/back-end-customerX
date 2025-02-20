@@ -47,10 +47,10 @@ export class TypeormContactRepository implements IContactRepository {
     return !!(numberPhoneExists || emailExists);
   }
 
-  async findManyContacts(): Promise<Contact[]> {
-    const contacts = await this.contactRepository.find();
-
-    return contacts;
+  async findManyContacts(customerId: string): Promise<Contact[]> {
+    return await this.contactRepository.find({
+      where: { customer: { id: customerId } },
+    });
   }
 
   async findContact(numberPhone: number): Promise<Contact> {
