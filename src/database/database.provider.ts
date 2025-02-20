@@ -1,5 +1,6 @@
 import { CustomerDatabase } from 'src/database/entities/Customer';
 import { DataSource } from 'typeorm';
+import { ContactDatabase } from './entities/Contact';
 
 export const databaseProviders = [
   {
@@ -12,7 +13,7 @@ export const databaseProviders = [
         username: 'postgres',
         password: '12345',
         database: 'customerx',
-        entities: [CustomerDatabase],
+        entities: [CustomerDatabase, ContactDatabase],
         synchronize: true,
       });
 
